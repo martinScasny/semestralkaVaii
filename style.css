@@ -1,7 +1,49 @@
 .bg-dark {
     background-color: rgba(0, 0, 40, 0.8)!important;
 }
+img.logo {
+    width: 4%;
+}
+
+form.form-inline.ml-auto {
+    margin: 0!important;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+div#napis {
+    font-family: 'Shadows Into Light', cursive;
+    font-size:10vw;
+    letter-spacing: 1.8px;
+    color: #ffffff;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 body {
-    background-image: ;
+    background-image: url("img/photo-1483470561301-395323922c3c.jpg");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #464646;
+}
+
+@media only screen and (max-width: 768px) {
+    img.logo {
+        width: 4vh;
+        margin: auto;
+    }
+
+
+    div#napis {
+        font-size:10vh;
+    }
+
 }
