@@ -22,10 +22,18 @@ div#napis {
     font-weight: 700;
     text-align: center;
     margin-top: 25vh;
-    margin-bottom: 50vh;
+    margin-bottom: 60vh;
 }
 
+img.obrazkyobdobia {
+    width: 100%;
+    position: relative;
+}
 
+.col-md-6 {
+    border: 15px solid rgba(20,20,35,0.5);
+    padding: 0px;
+}
 
 body {
     background-image: url("img/photo-1483470561301-395323922c3c.jpg");
@@ -38,6 +46,17 @@ body {
 
 a.nav-item.nav-link {
     margin: 0 0 0 9vw;
+}
+
+p.popisobrazkov {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2vw;
+    font-family: initial;
+    color: white;
+    opacity: 0.7;
 }
 
 @media only screen and (max-width: 768px) {
@@ -63,6 +82,9 @@ a.nav-item.nav-link {
         margin: 3vh auto 3vh auto;
     }
 
+    p.popisobrazkov {
+        font-size: 2vh;
+    }
 
 
 }
