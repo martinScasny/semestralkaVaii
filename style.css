@@ -1,5 +1,5 @@
 .bg-dark {
-    background-color: rgba(0, 0, 40, 0.8)!important;
+    background-color: rgba(20, 20, 35, 0.8)!important;
 }
 img.logo {
     width: 4%;
@@ -11,6 +11,7 @@ form.form-inline.ml-auto {
 
 .navbar-nav {
     margin: auto;
+    font-size: 1.5vw;
 }
 
 div#napis {
@@ -19,11 +20,11 @@ div#napis {
     letter-spacing: 1.8px;
     color: #ffffff;
     font-weight: 700;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 25vh;
+    margin-bottom: 50vh;
 }
+
 
 
 body {
@@ -35,9 +36,17 @@ body {
     background-color: #464646;
 }
 
+a.nav-item.nav-link {
+    margin: 0 0 0 9vw;
+}
+
 @media only screen and (max-width: 768px) {
     img.logo {
         width: 4vh;
+    }
+
+    input.form-control.mr-sm-2 {
+        width: 75%;
         margin: auto;
     }
 
@@ -45,5 +54,15 @@ body {
     div#napis {
         font-size:15vw;
     }
+
+    .navbar-nav {
+        font-size: 1.5vh;
+    }
+
+    a.nav-item.nav-link {
+        margin: 3vh auto 3vh auto;
+    }
+
+
 
 }
