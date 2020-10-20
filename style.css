@@ -35,6 +35,12 @@ img.obrazkyobdobia {
     padding: 0px;
 }
 
+
+p.popisobrazkov:hover {
+    opacity: 1;
+
+}
+
 body {
     background-image: url("img/photo-1483470561301-395323922c3c.jpg");
     background-repeat: no-repeat;
@@ -49,14 +55,18 @@ a.nav-item.nav-link {
 }
 
 p.popisobrazkov {
+
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2vw;
-    font-family: initial;
+    font-size: 3vw;
+    font-family: 'Quicksand', sans-serif;
     color: white;
     opacity: 0.7;
+    text-align: center;
+    transition: transform .2s;
+    transform: translate(-50%, -50%);
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -83,7 +93,8 @@ p.popisobrazkov {
     }
 
     p.popisobrazkov {
-        font-size: 2vh;
+        font-size: 5vh;
+        opacity: 1;
     }
 
 
