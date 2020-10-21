@@ -24,21 +24,30 @@ div#napis {
     margin-top: 25vh;
     margin-bottom: 60vh;
 }
+div#napis p {
+    text-align: center;
+}
 
 img.obrazkyobdobia {
     width: 100%;
     position: relative;
+    transition: .5s ease;
+    filter: grayscale(100%);
 }
+
+
 
 .col-md-6 {
-    border: 15px solid rgba(20,20,35,0.5);
-    padding: 0px;
+    padding: 1vw;
 }
 
 
-p.popisobrazkov:hover {
-    opacity: 1;
+.obrazkyhover:hover img.obrazkyobdobia {
+    filter: none!important;
+}
 
+.obrazkyhover:hover p.popisobrazkov {
+    font-size: 2.5vw;
 }
 
 body {
@@ -54,10 +63,6 @@ a.nav-item.nav-link {
     margin: 0 0 0 9vw;
 }
 
-p.popisobrazkov:hover {
-    font-size: 3.5vw;
-}
-
 p.popisobrazkov {
 
     position: absolute;
@@ -68,10 +73,82 @@ p.popisobrazkov {
     color: white;
     opacity: 0.7;
     text-align: center;
-    transition: transform .2s;
+    transition: .5s ease;
     transform: translate(-50%, -50%);
 
 }
+.container.col-md-6.align-content-center {
+    border: 0;
+    padding: 3vw;
+    text-align: center;
+    color: white;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.col-md-12.pasik {
+    height: .1vh;
+    background-color: white;
+}
+
+.container.col-md-12 {
+    top: 0vh;
+    opacity: 0.9;
+}
+.container.col-md-12 {
+    background-color: black;
+    height: 100%;
+}
+
+hr {
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+h1.display-4 {
+    font-size: 3vw;
+}
+
+p {
+    text-align: left;
+}
+
+.col-md-12#textura {
+    position: absolute;
+    display: block;
+    z-index: -3;
+    margin-top: 25vh;
+    transform: translateY(-45%);
+}
+#textura img {
+    opacity: 0.4;
+    filter: invert(1);
+}
+
+.col-md-12#textura img  {
+    width: 100%;
+    height: 100%;
+}
+hr.menu {
+    opacity: 0.8;
+    height: 2px;
+}
+
+.pozadie {
+    padding-top: 10vh;
+    padding-bottom: 30vh;
+    background-color: black;
+    height: max-content;
+    opacity: 1!important;
+}
+footer.page-footer.font-small.unique-color-dark.pt-4 {
+    background-color: rgb(8,9,12);
+}
+.footer-copyright.text-center.py-3 {
+    color: white;
+}
+
 
 @media only screen and (max-width: 768px) {
     img.logo {
@@ -101,11 +178,23 @@ p.popisobrazkov {
         opacity: 1;
     }
 
-    p.popisobrazkov:hover {
+    .obrazkyhover:hover p.popisobrazkov {
         font-size: 5vh;
-        opacity: 1;
     }
 
+    h1.display-4 {
+        font-size: 3vh;
+    }
+    a.nav-item.nav-link {
+        font-size: 2vh;
+    }
 
+    .col-md-6 {
+        padding: 1vh;
+    }
+
+    img.obrazkyobdobia {
+        filter: none;
+    }
 
 }
