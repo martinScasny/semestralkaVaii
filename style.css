@@ -14,11 +14,6 @@ form.form-inline.ml-auto {
     font-size: 1.5vw;
 }
 
-a.nav-item.nav-link:hover {
-    letter-spacing: 7px;
-    transition: all 0.5s;
-}
-
 div#napis {
     font-family: 'Shadows Into Light', cursive;
     font-size:10vw;
@@ -200,6 +195,11 @@ footer.page-footer.font-small.unique-color-dark.pt-4 {
 
     img.obrazkyobdobia {
         filter: none;
+    }
+
+    a.nav-item.nav-link:hover {
+        letter-spacing: 7px;
+        transition: all 0.5s;
     }
 
 }
