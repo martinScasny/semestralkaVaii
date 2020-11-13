@@ -42,10 +42,19 @@ if ($_GET == null) {
                     <label>Text</label>
                     <textarea name="text" class="form-control"></textarea>
                 </div>
-                <button type="submit" class="btn-dark">Submit</button>
+                <button type="submit" class="btn-dark" >Submit</button>
             </form>
         </div>
 
-<?php } } ?>
+<?php
+        if (isset($_POST['nazov'])) {
+            header("Location: zaujimavosti.php");
+        }
+    }
+    if ($_GET['a'] == 'delete') {
+        $id=$_GET['id'];
+        $storage->removeArticle($id);
+        header("Location: zaujimavosti.php");
+    } } ?>
 
 <?php echo file_get_contents("footer.html"); ?>

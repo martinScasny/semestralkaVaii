@@ -49,4 +49,10 @@ class Storage
         $stmt = $this->pdo->prepare("INSERT INTO blog.articles (nazov, text, id) values (?, ?, ?)");
         $stmt->execute([$article->getNazov(), $article->getText(), $article->getId()]);
     }
+
+    public function removeArticle(int $id) : void
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM blog.articles WHERE id = (?)");
+        $stmt->execute([$id]);
+    }
 }
