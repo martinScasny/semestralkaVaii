@@ -94,12 +94,12 @@ img {
     background-color: white;
 }
 
-.container.col-md-12 {
-    opacity: 0.9;
-}
-.container.col-md-12 {
+.container.col-12 {
     background-color: black;
-    height: 100%;
+}
+.container.col-12 {
+    background-color: black;
+    min-height: 100%;
 }
 
 hr {
@@ -148,11 +148,12 @@ footer.page-footer.font-small.unique-color-dark.pt-4 {
     color: white;
 }
 
-.container.col-md-12 {
+.container.col-12 {
     opacity: 1;
 }
-.container.col-md-12.zaujimavosti {
+.container.col-12.zaujimavosti {
     min-height: 100vh;
+    background-color: black;
 }
 hr.featurette-divider.zaujimavosti {
     width: 60%;

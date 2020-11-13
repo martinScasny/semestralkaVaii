@@ -67,4 +67,15 @@ class Storage
             return true;
         } else  return false;
     }
+
+    public function getTextPreId(int $id) : array{
+        $stmt = $this->pdo->prepare("SELECT * FROM blog.articles WHERE id = (?)");
+        $stmt->execute([$id]);
+        $articles=[];
+        while ($row = $stmt->fetch()) {
+            $articles['nazov'] = $row['nazov'];
+            $articles['text'] = $row['text'];
+        }
+        return $articles;
+    }
 }

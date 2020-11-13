@@ -58,13 +58,15 @@ if ($_GET == null) {
             <form method="post">
                 <div class="form-group">
                     <label>Názov</label>
-                    <input name="nazov" type="text" class="form-control">
+                    <input name="nazov" type="text" class="form-control" value="<?= $storage->getTextPreId($_GET['id'])['nazov'] ?>">
                 </div>
                 <div class="form-group">
                     <label>Text</label>
-                    <textarea name="text" class="form-control"></textarea>
+                    <textarea name="text" class="form-control"><?= $storage->getTextPreId($_GET['id'])['text'] ?></textarea>
                 </div>
-                <button type="submit" class="btn-dark" >Submit</button>
+                <div class="container col-md-1 align-content-center">
+                    <button type="submit" class="btn-dark">Submit</button>
+                </div>
             </form>
         </div>
 
