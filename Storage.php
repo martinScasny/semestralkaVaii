@@ -44,15 +44,27 @@ class Storage
         $this->saveArticle($article);
     }
 
-    public function saveArticle(Article $article) : void
+    public function saveArticle(Article $article) : bool
     {
-        $stmt = $this->pdo->prepare("INSERT INTO blog.articles (nazov, text, id) values (?, ?, ?)");
-        $stmt->execute([$article->getNazov(), $article->getText(), $article->getId()]);
+        if ($article->getNazov() != "" && $article->setText() != "") {
+            $stmt = $this->pdo->prepare("INSERT INTO blog.articles (nazov, text, id) values (?, ?, ?)");
+            $stmt->execute([$article->getNazov(), $article->getText(), $article->getId()]);
+            return true;
+        } else return false;
     }
 
     public function removeArticle(int $id) : void
     {
         $stmt = $this->pdo->prepare("DELETE FROM blog.articles WHERE id = (?)");
         $stmt->execute([$id]);
+    }
+
+    public function editArticle(int $id, string $nazov, string $text) : bool
+    {
+        if ($nazov != "" && $text != "") {
+            $stmt = $this->pdo->prepare("UPDATE blog.articles SET nazov = (?), text = (?) WHERE id = (?)");
+            $stmt->execute([$nazov, $text, $id]);
+            return true;
+        } else  return false;
     }
 }
