@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-require_once "Article.php";
+require_once "Prispevok.php";
 
-class Storage
+class Databaza
 {
     private $user = "root";
     private $pass = "dtb456";
@@ -12,7 +12,7 @@ class Storage
     private PDO $pdo;
 
     /**
-     * Storage constructor.
+     * Databaza constructor.
      */
     public function __construct()
     {
@@ -22,7 +22,7 @@ class Storage
     }
 
     /**
-     * @return Article[]
+     * @return Prispevok[]
      */
 
 
@@ -32,7 +32,7 @@ class Storage
         );
         $articles=[];
         while ($row = $stmt->fetch()) {
-            $article = new Article($row['nazov'], $row['text'], (int) $row['id']);
+            $article = new Prispevok($row['nazov'], $row['text'], (int) $row['id']);
             $articles[] = $article;
         }
         return $articles;
@@ -40,13 +40,13 @@ class Storage
 
     public function createPost(string $nazov, string $text, int $id) : void
     {
-        $article = new Article($nazov, $text, $id);
+        $article = new Prispevok($nazov, $text, $id);
         $this->saveArticle($article);
     }
 
-    public function saveArticle(Article $article) : bool
+    public function saveArticle(Prispevok $article) : bool
     {
-        if ($article->getNazov() != "" && $article->setText() != "") {
+        if ($article->getNazov() != "" && $article->getText() != "") {
             $stmt = $this->pdo->prepare("INSERT INTO blog.articles (nazov, text, id) values (?, ?, ?)");
             $stmt->execute([$article->getNazov(), $article->getText(), $article->getId()]);
             return true;
@@ -71,11 +71,11 @@ class Storage
     public function getTextPreId(int $id) : array{
         $stmt = $this->pdo->prepare("SELECT * FROM blog.articles WHERE id = (?)");
         $stmt->execute([$id]);
-        $articles=[];
-        while ($row = $stmt->fetch()) {
-            $articles['nazov'] = $row['nazov'];
-            $articles['text'] = $row['text'];
-        }
-        return $articles;
+        $prispevky=[];
+        $row = $stmt->fetch();
+        $prispevky['nazov'] = $row['nazov'];
+        $prispevky['text'] = $row['text'];
+
+        return $prispevky;
     }
 }

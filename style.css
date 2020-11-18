@@ -22,7 +22,6 @@ div#napis {
     font-weight: 700;
     text-align: center;
     margin-top: 25vh;
-    margin-bottom: 60vh;
 }
 div#napis p {
     text-align: center;
@@ -35,12 +34,21 @@ img.obrazkyobdobia {
     filter: grayscale(100%);
 }
 
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top {
+    background-image: url("img/Rectangle_1.png");
+    background-repeat: repeat-x;
+    background-size: cover;
+    min-height: 12vh;
+}
 
+.scrolled {
+    opacity: 0.7 !important;
+    transition: opacity 200ms linear;
+}
 
 .col-md-6 {
     padding: 1vw;
 }
-
 
 .obrazkyhover:hover img.obrazkyobdobia {
     filter: none!important;
@@ -50,17 +58,29 @@ img.obrazkyobdobia {
     font-size: 2.5vw;
 }
 
-body {
-    background-image: url("img/photo-1483470561301-395323922c3c.jpg");
+.stromy {
+    background-image: url("img/wallpaper2.jpg");
     background-repeat: no-repeat;
     background-size: cover ;
     background-position: center center;
-    background-attachment: fixed;
-    background-color: #464646;
+    background-attachment: scroll;
+    padding-bottom: 20vw;
+}
+
+.stromyfixed{
+    background-image: url("img/wallpaper2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: center center;
+    background-attachment: fixed;;
 }
 
 a.nav-item.nav-link {
     margin: 0 0 0 9vw;
+}
+
+div#navbarCollapse {
+    margin-right: 12vw;
 }
 
 p.popisobrazkov {
@@ -95,10 +115,7 @@ img {
 }
 
 .container.col-12 {
-    background-color: black;
-}
-.container.col-12 {
-    background-color: black;
+    background-color: #040402;
     min-height: 100%;
 }
 
@@ -107,10 +124,12 @@ hr {
 }
 h1.display-4 {
     font-size: 3vw;
+    text-align: left;
 }
 
 p {
     text-align: left;
+    margin-bottom: 0;
 }
 
 .col-md-12#textura {
@@ -153,10 +172,14 @@ footer.page-footer.font-small.unique-color-dark.pt-4 {
 }
 .container.col-12.zaujimavosti {
     min-height: 100vh;
-    background-color: black;
+    background-color: rgba(0,0,0,0.8);
 }
 hr.featurette-divider.zaujimavosti {
-    width: 60%;
+    width: 100%;
+}
+
+.container.col-md-12.align-content-center {
+    padding: 0;
 }
 
 a.btn.btn-link {
@@ -182,6 +205,22 @@ a.btn.btn-link {
 
 .form-group {
     color: white;
+}
+
+.container.col-md-6.align-content-center {
+    border: 1px solid gray;
+    border-radius: 25px;
+    margin-bottom: 3vh;
+    background-color: rgba(0, 0, 0,0.6);
+}
+
+.container.col-md-6.align-content-center.tlacitko {
+    border: 0;
+    background: none;
+}
+
+.container.col-md-6.align-content-center.tlacitko {
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width: 768px) {

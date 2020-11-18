@@ -1,24 +1,26 @@
 <?php
-    require "Storage.php";
-    $storage = new Storage();
+    require "Databaza.php";
+    $databaza = new Databaza();
 
-    $articles = $storage->getAll();
+    $prispevky = $databaza->getAll();
 ?>
 <?php echo file_get_contents("header.html"); ?>
 
-
+<br>
 <?php
 if ($_GET == null) {
-    foreach ($articles as $article) { ?>
+    foreach ($prispevky as $prispevok) { ?>
 
         <div class="container col-md-6 align-content-center">
-            <h1 class="display-4"><?=$article->getNazov()?></h1>
-            <p><?=$article->getText()?></p>
-            <a href="<?= "?a=edit" . "&id=" . $article->getId()?>" class="btn btn-link"><i class="fas fa-edit"></i> Uprav</a>
-            <a href="<?= "?a=delete" . "&id=" . $article->getId()?>" class="btn btn-link"><i class="fas fa-trash-alt"></i> Zmaž</a>
+            <h1 class="display-4"><?=$prispevok->getNazov()?></h1>
+            <hr class="featurette-divider zaujimavosti">
+            <p><?=$prispevok->getText()?></p>
+            <hr class="featurette-divider zaujimavosti">
+            <a href="<?= "?a=edit" . "&id=" . $prispevok->getId()?>" class="btn btn-link"><i class="fas fa-edit"></i> Uprav</a>
+            <a href="<?= "?a=delete" . "&id=" . $prispevok->getId()?>" class="btn btn-link"><i class="fas fa-trash-alt"></i> Zmaž</a>
         </div>
 
-    <hr class="featurette-divider zaujimavosti">
+
 
     <?php }
     ?>
@@ -28,6 +30,7 @@ if ($_GET == null) {
 <?php } else {
     if ($_GET['a'] == 'add') { ?>
         <div class="container col-md-7 align-content-center">
+            <hr class="featurette-divider zaujimavosti">
             <form method="post">
                 <div class="form-group">
                     <label>Názov</label>
@@ -39,18 +42,19 @@ if ($_GET == null) {
                 </div>
                 <button type="submit" class="btn-dark" >Submit</button>
             </form>
+            <hr class="featurette-divider zaujimavosti">
         </div>
 
 <?php
         if (isset($_POST['nazov'])) {
-            $article = new Article($_POST['nazov'], $_POST['text'], $id = rand(1,100000));
-            $storage->saveArticle($article);
+            $prispevok = new Prispevok($_POST['nazov'], $_POST['text'], $id = rand(1    ,100000));
+            $databaza->saveArticle($prispevok);
             header("Location: zaujimavosti.php");
         }
     }
     if ($_GET['a'] == 'delete') {
         $id=$_GET['id'];
-        $storage->removeArticle($id);
+        $databaza->removeArticle($id);
         header("Location: zaujimavosti.php");
     }
     if ($_GET['a'] == 'edit') { ?>
@@ -58,21 +62,20 @@ if ($_GET == null) {
             <form method="post">
                 <div class="form-group">
                     <label>Názov</label>
-                    <input name="nazov" type="text" class="form-control" value="<?= $storage->getTextPreId($_GET['id'])['nazov'] ?>">
+                    <input name="nazov" type="text" class="form-control" value="<?= $databaza->getTextPreId($_GET['id'])['nazov'] ?>">
                 </div>
                 <div class="form-group">
                     <label>Text</label>
-                    <textarea name="text" class="form-control"><?= $storage->getTextPreId($_GET['id'])['text'] ?></textarea>
+                    <textarea name="text" class="form-control"><?= $databaza->getTextPreId($_GET['id'])['text'] ?></textarea>
                 </div>
                 <div class="container col-md-1 align-content-center">
                     <button type="submit" class="btn-dark">Submit</button>
                 </div>
             </form>
         </div>
-
         <?php
         if (isset($_POST['nazov'])) {
-            $pom = $storage->editArticle($_GET['id'],$_POST['nazov'],$_POST['text']);
+            $pom = $databaza->editArticle($_GET['id'],$_POST['nazov'],$_POST['text']);
             if ($pom) {
                 header("Location: zaujimavosti.php");
             } else echo "<script type='text/javascript'>alert('Zadaj platný text !');</script>";
