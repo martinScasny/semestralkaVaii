@@ -1,5 +1,5 @@
 .bg-dark {
-    background-color: rgba(20, 20, 35, 0.8)!important;
+    background-color: rgba(20, 20, 35, 0.8);
 }
 img.logo {
     width: 4%;
@@ -21,10 +21,18 @@ div#napis {
     color: #ffffff;
     font-weight: 700;
     text-align: center;
-    margin-top: 25vh;
 }
 div#napis p {
     text-align: center;
+}
+
+p.prispevky {
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+a {
+    text-decoration: none!important;
 }
 
 img.obrazkyobdobia {
@@ -33,12 +41,23 @@ img.obrazkyobdobia {
     transition: .5s ease;
     filter: grayscale(100%);
 }
-
-nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top {
-    background-image: url("img/Rectangle_1.png");
-    background-repeat: repeat-x;
-    background-size: cover;
-    min-height: 12vh;
+@media only screen and (min-width: 768px) {
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top {
+        position: fixed;
+        background-image: url("img/Rectangle_1.png");
+        background-repeat: repeat-x;
+        background-size: cover;
+        min-height: 12vh;
+    }
+}
+@media only screen and (min-width: 768px) {
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top.zaujimavosti {
+        position: sticky;
+        background-image: url("img/Rectangle_1.png");
+        background-repeat: repeat-x;
+        background-size: cover;
+        min-height: 12vh;
+    }
 }
 
 .scrolled {
@@ -64,7 +83,9 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top {
     background-size: cover ;
     background-position: center center;
     background-attachment: scroll;
-    padding-bottom: 20vw;
+    margin-top: 12vh;
+    padding-bottom: 27vh;
+    padding-top: 27vh;
 }
 
 .stromyfixed{
@@ -123,7 +144,7 @@ hr {
     border-top: 1px solid rgba(255,255,255,.1);
 }
 h1.display-4 {
-    font-size: 3vw;
+    font-size: 2.3vw;
     text-align: left;
 }
 
@@ -154,7 +175,7 @@ hr.menu {
 }
 
 .pozadie {
-    padding-top: 10vh;
+    padding-top: 15vh;
     padding-bottom: 30vh;
     background-color: black;
     height: max-content;
@@ -192,6 +213,12 @@ a.btn.btn-link {
     border-color: #ffffff;
 }
 
+a.btn.btn-link:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.5s;
+}
+
 .btn-outline-primary {
     width: 60%;
     color: #ffffff;
@@ -207,7 +234,7 @@ a.btn.btn-link {
     color: white;
 }
 
-.container.col-md-6.align-content-center {
+.container.col-md-6.align-content-center.zaujimavosti {
     border: 1px solid gray;
     border-radius: 25px;
     margin-bottom: 3vh;
@@ -217,6 +244,14 @@ a.btn.btn-link {
 .container.col-md-6.align-content-center.tlacitko {
     border: 0;
     background: none;
+}
+
+.display-3 {
+    font-size: 3vw;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .container.col-md-6.align-content-center.tlacitko {
@@ -234,12 +269,9 @@ a.btn.btn-link {
     }
 
 
-    div#napis {
-        font-size:15vw;
-    }
-
     .navbar-nav {
         font-size: 1.5vh;
+        margin-left: 11vw;
     }
 
     a.nav-item.nav-link {
@@ -257,6 +289,11 @@ a.btn.btn-link {
 
     h1.display-4 {
         font-size: 3vh;
+        text-align: center;
+    }
+    .display-3 {
+        font-size: 6vh;
+        margin: 0;
     }
     a.nav-item.nav-link {
         font-size: 2vh;
@@ -272,11 +309,33 @@ a.btn.btn-link {
 
     a.nav-item.nav-link:hover {
         letter-spacing: 7px;
-        transition: all 0.5s;
+
     }
 
     hr.featurette-divider.zaujimavosti {
         width: 100%;
+    }
+
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top.zaujimavosti {
+        background-color: black!important;
+    }
+    .col-md-6 p div{
+        width: 80%;
+    }
+    nav#top {
+        position: fixed;
+        width: 100%;
+        background-color: black!important;
+    }
+    .stromy {
+        padding-top: 35vh;
+        margin-top: 56px;
+    }
+
+    div#napis {
+        margin-top: 0;
+        margin-bottom: 20vh;
+        font-size: 9vh;
     }
 
 }

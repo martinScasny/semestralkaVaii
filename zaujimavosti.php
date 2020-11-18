@@ -11,10 +11,10 @@
 if ($_GET == null) {
     foreach ($prispevky as $prispevok) { ?>
 
-        <div class="container col-md-6 align-content-center">
+        <div class="container col-md-6 align-content-center zaujimavosti">
             <h1 class="display-4"><?=$prispevok->getNazov()?></h1>
             <hr class="featurette-divider zaujimavosti">
-            <p><?=$prispevok->getText()?></p>
+            <p class="prispevky"><?=$prispevok->getText()?></p>
             <hr class="featurette-divider zaujimavosti">
             <a href="<?= "?a=edit" . "&id=" . $prispevok->getId()?>" class="btn btn-link"><i class="fas fa-edit"></i> Uprav</a>
             <a href="<?= "?a=delete" . "&id=" . $prispevok->getId()?>" class="btn btn-link"><i class="fas fa-trash-alt"></i> Zmaž</a>
