@@ -6,11 +6,29 @@ class Prispevok
     private string $nazov;
     private string $text;
     private int $id;
+    private string $datum;
 
-    public function __construct(string $nazov, string $text, int $id) {
+    public function __construct(string $nazov, string $text, int $id, string $datum) {
         $this->nazov = $nazov;
         $this->text = $text;
         $this->id = $id;
+        $this->datum = $datum;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDatum(): string
+    {
+        return $this->datum;
+    }
+
+    /**
+     * @param string $datum
+     */
+    public function setDatum(string $datum): void
+    {
+        $this->datum = $datum;
     }
 
     public function setNazov(string $nazov) {

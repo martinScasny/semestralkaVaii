@@ -6,7 +6,7 @@ class Databaza
 {
     private $user = "root";
     private $pass = "dtb456";
-    private $db = "blog";
+    private $db = "databaza";
     private $host = "localhost";
 
     private PDO $pdo;
@@ -27,49 +27,63 @@ class Databaza
 
 
     public function getAll() : array {
-        $stmt = $this->pdo->query(
-            "SELECT * FROM blog.articles"
-        );
-        $articles=[];
+        $stmt = $this->pdo->query("SELECT * FROM databaza.prispevky ORDER BY id DESC");
+        $prispevky=[];
         while ($row = $stmt->fetch()) {
-            $article = new Prispevok($row['nazov'], $row['text'], (int) $row['id']);
-            $articles[] = $article;
+            $prispevok = new Prispevok($row['nazov'], $row['text'], (int) $row['id'], $row['datum']);
+            $prispevky[] = $prispevok;
         }
-        return $articles;
+        return $prispevky;
     }
 
-    public function createPost(string $nazov, string $text, int $id) : void
+    public function createPost(string $nazov, string $text, int $id) : bool
     {
-        $article = new Prispevok($nazov, $text, $id);
-        $this->saveArticle($article);
+        try {
+            $prispevok = new Prispevok($nazov, $text, $id, date("D M j G:i:s T Y", strtotime("+1 hours")));
+            $this->saveArticle($prispevok);
+            return true;
+        } catch (PDOException $exception) {
+            return false;
+        }
+
     }
 
-    public function saveArticle(Prispevok $article) : bool
+    public function saveArticle(Prispevok $prispevok) : bool
     {
-        if ($article->getNazov() != "" && $article->getText() != "") {
-            $stmt = $this->pdo->prepare("INSERT INTO blog.articles (nazov, text, id) values (?, ?, ?)");
-            $stmt->execute([$article->getNazov(), $article->getText(), $article->getId()]);
+        try {
+        if ($prispevok->getNazov() != "" && $prispevok->getText() != "") {
+            $stmt = $this->pdo->prepare("INSERT INTO databaza.prispevky (nazov, text, id, datum) values (?, ?, ?, ?)");
+            $stmt->execute([$prispevok->getNazov(), $prispevok->getText(), $prispevok->getId(), $prispevok->getDatum()]);
             return true;
         } else return false;
+        } catch(PDOException $exception) {
+            return false;
+        }
     }
 
     public function removeArticle(int $id) : void
     {
-        $stmt = $this->pdo->prepare("DELETE FROM blog.articles WHERE id = (?)");
+        $stmt = $this->pdo->prepare("DELETE FROM databaza.prispevky WHERE id = (?)");
         $stmt->execute([$id]);
     }
 
     public function editArticle(int $id, string $nazov, string $text) : bool
     {
-        if ($nazov != "" && $text != "") {
-            $stmt = $this->pdo->prepare("UPDATE blog.articles SET nazov = (?), text = (?) WHERE id = (?)");
-            $stmt->execute([$nazov, $text, $id]);
-            return true;
-        } else  return false;
+        try {
+            if ($nazov != "" && $text != "") {
+                $date = date("D M j G:i:s T Y", strtotime("+1 hours"));
+                $stmt = $this->pdo->prepare("UPDATE databaza.prispevky SET nazov = (?), text = (?), datum = (?) WHERE id = (?)");
+                $stmt->execute([$nazov, $text,$date,$id]);
+                return true;
+            } else  return false;
+        }catch (PDOException $exception) {
+            return false;
+        }
+
     }
 
     public function getTextPreId(int $id) : array{
-        $stmt = $this->pdo->prepare("SELECT * FROM blog.articles WHERE id = (?)");
+        $stmt = $this->pdo->prepare("SELECT * FROM databaza.prispevky WHERE id = (?)");
         $stmt->execute([$id]);
         $prispevky=[];
         $row = $stmt->fetch();
@@ -77,5 +91,18 @@ class Databaza
         $prispevky['text'] = $row['text'];
 
         return $prispevky;
+    }
+
+    public function generujID() : int {
+        try {
+            $stmt = $this->pdo->query("SELECT MAX(id) FROM databaza.prispevky");
+            $row = $stmt->fetch();
+            $maxID = $row['MAX(id)'];
+            return (int)$maxID;
+
+        } catch (PDOException $exception) {
+            return 1;
+        }
+
     }
 }
