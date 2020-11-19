@@ -32,11 +32,11 @@ if ($_GET == null) {
             <form method="post">
                 <div class="form-group">
                     <label>Názov</label>
-                    <input name="nazov" type="text" class="form-control" placeholder="Vložte názov príspevku (max 30znakov)">
+                    <input name="nazov" type="text" class="form-control" pattern=".{4,}"   required title="Aspoň 4 znaky" placeholder="Vložte názov príspevku (max 30znakov)">
                 </div>
                 <div class="form-group">
                     <label>Text</label>
-                    <textarea name="text" class="form-control" placeholder="Sem píšte text...(max 255znakov)"></textarea>
+                    <textarea name="text" class="form-control" pattern=".{1,255}"   required title="Maximalne 255 znakov" placeholder="Sem píšte text...(max 255znakov)"></textarea>
                 </div>
                 <button type="submit" class="btn-dark" >Submit</button>
             </form>
@@ -44,7 +44,11 @@ if ($_GET == null) {
         </div>
 
 <?php
+
         if (isset($_POST['nazov']) && isset($_POST['text'])) {
+            $_POST['nazov'] = trim(($_POST['nazov']));
+            $_POST['text'] = trim(($_POST['text']));
+
             if ($_POST['nazov'] != "" && $_POST['text'] != "") {
                 $pom = $databaza->createPost($_POST['nazov'],$_POST['text'],$databaza->generujID() + 1);
                 if ($pom)
@@ -75,10 +79,14 @@ if ($_GET == null) {
         </div>
         <?php
         if (isset($_POST['nazov']) && isset($_POST['text'])) {
-            $pom = $databaza->editArticle($_GET['id'],$_POST['nazov'],$_POST['text']);
-            if ($pom) {
-                header("Location: zaujimavosti.php");
-            } else echo "<script type='text/javascript'>alert('Zadaj platný text !');</script>";
+            $_POST['nazov'] = trim(($_POST['nazov']));
+            $_POST['text'] = trim(($_POST['text']));
+            if ($_POST['nazov'] != "" && $_POST['text'] != "") {
+                $pom = $databaza->editArticle($_GET['id'],$_POST['nazov'],$_POST['text']);
+                if ($pom) {
+                    header("Location: zaujimavosti.php");
+                } else echo "<script type='text/javascript'>alert('Zadaj platný text !');</script>";
+            } else echo "<script type='text/javascript'>alert('Textové pole nesmie byť prázdne !');</script>";
         }
     }
 } ?>
