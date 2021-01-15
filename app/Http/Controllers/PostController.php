@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,13 +18,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('news');
+        return view('news.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -30,11 +35,25 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'title' => 'required',
+            'text' => 'required',
+            'image' => 'required|image',
+        ]);
+
+        $imagePath = request('image')->store('uploads','public');
+
+        \App\Models\Post::create([
+            'title' => $data['title'],
+            'text' => $data['text'],
+            'image' => $imagePath,
+        ]);
+
+        return redirect('/news/index');
     }
 
     /**

@@ -34,7 +34,7 @@
                     <div class="navbar-nav">
                         <a href="{{ route('home') }}" class="nav-item nav-link active">Domov</a>
                         <a href="{{ route('news') }}" class="nav-item nav-link">Novinky</a>
-                        <a href="{{ route('constellations') }}" class="nav-item nav-link">Súhvezdia</a>
+                        <a href="" class="nav-item nav-link">Súhvezdia</a>
                     </div>
 
                     <!-- Right Side Of Navbar -->
@@ -80,6 +80,12 @@
             @yield('content')
         </main>
     </div>
-
+    <div class="container col-md-12 align-content-center">
+        <footer class="page-footer font-small unique-color-dark pt-4">
+            <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                Martin Scasny
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
