@@ -1,0 +1,97 @@
+
+
+@media only screen and (min-width: 768px) {
+    nav.navbar.sticky-top {
+
+        background-image: url("../img/Rectangle_1.png");
+        background-repeat: repeat-x;
+        background-size: cover;
+        min-height: 12vh;
+    }
+}
+
+img.logo {
+    width: 4%;
+}
+
+a.nav-item.nav-link {
+    margin: 0 0 0 9vw;
+    color: white!important;
+    font-size: 1.5vw;
+}
+
+div#navbarCollapse {
+    margin-left: 17vw;
+    height: 7vh;
+    min-width: 8vw;
+}
+
+footer.page-footer.font-small.unique-color-dark.pt-4 {
+    background-color: rgb(8,9,12);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.footer-copyright.text-center.py-3 {
+    color: white;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.login {
+    color: white;
+}
+
+.darkColor {
+    background-color: #424346;
+    color: #B0B0B0;
+}
+
+/* homepage */
+div#napis {
+    font-family: 'Shadows Into Light', cursive;
+    font-size:10vw;
+    letter-spacing: 1.8px;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+}
+div#napis p {
+    text-align: center;
+}
+
+.stromy {
+    background-image: url("../img/wallpaper2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: center center;
+    background-attachment: scroll;
+    padding-bottom: 57vh;
+    padding-top: 26vh;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .navbar-nav {
+        margin: auto;
+        font-size: 1.5vw;
+    }
+
+    a.nav-item.nav-link {
+        margin: 3vh auto 3vh auto;
+    }
+
+    a.nav-item.nav-link:hover {
+        letter-spacing: 7px;
+    }
+
+    nav.navbar {
+        background-color: black!important;
+    }
+
+
+}
+
