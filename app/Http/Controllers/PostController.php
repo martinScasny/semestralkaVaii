@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -18,7 +22,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('news.index');
+        $post = DB::table('posts')->orderBy('created_at', 'DESC')->get();
+
+        return view('news.index', ['posts' => $post]);
     }
 
     /**
@@ -40,12 +46,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'title' => 'required',
+            'title' => 'required|max:100',
             'text' => 'required',
-            'image' => 'required|image',
+            'image' => 'required|image', // TODO change to non required
         ]);
 
         $imagePath = request('image')->store('uploads','public');
+
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,500);
+        $image->save();
 
         \App\Models\Post::create([
             'title' => $data['title'],
@@ -56,48 +65,52 @@ class PostController extends Controller
         return redirect('/news/index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(Post $post)
     {
-        //
+        return view('news.edit',compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $data = request()->validate([
+            'title' => 'required|max:100',
+            'text' => 'required',
+            'image' => 'required|image', // TODO change to non required
+        ]);
+        $oldPath = Post::find($id)['image'];
+
+        $imagePath = request('image')->store('uploads','public');
+
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,500);
+        $image->save();
+
+        $request['image'];
+
+
+        Storage::delete('public/' . $oldPath);
+
+        Post::find($id)->update([
+            'title' => $data['title'],
+            'text' => $data['text'],
+            'image' => $imagePath,
+        ]);
+        return redirect('/news/index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(Post $post)
     {
-        //
+        $oldPath = Post::find($post->id)['image'];
+        Storage::delete('public/' . $oldPath);
+        $post->delete();
+        return redirect()->route('news');
     }
 }

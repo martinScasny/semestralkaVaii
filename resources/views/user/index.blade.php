@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5 mb-3">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">{{ __('Používatelia') }}</div>
+                <div class="card bg-dark">
+                    <div class="card-header login">{{ __('Používatelia') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -19,7 +19,9 @@
                                         new user</a>
                                 </div>
                             @endcan
-                        {!! $grid->show() !!}
+                        <div class="login">
+                            {!! $grid->show() !!}
+                        </div>
                     </div>
                 </div>
             </div>

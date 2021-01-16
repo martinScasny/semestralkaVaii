@@ -6,24 +6,40 @@
         background-image: url("../img/Rectangle_1.png");
         background-repeat: repeat-x;
         background-size: cover;
-        min-height: 12vh;
+        min-height: 13vh;
         border-bottom: 1px solid rgba(255,255,255,0.4);
     }
+}
+
+.scrolled {
+    opacity: 0.7 !important;
+    transition: opacity 200ms linear;
 }
 
 img.logo {
     width: 4%;
 }
 
+a.nav-link {
+    font-size: 1vw;
+}
+
 a.nav-item.nav-link {
     margin: 0 0 0 9vw;
+    color: #c3c3c3 !important;
+    font-size: 1.5vw;
+}
+
+a.nav-item.nav-link:hover {
+    margin: 0 0 0 9vw;
     color: white!important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 1.5vw;
 }
 
 div#navbarCollapse {
     margin-left: 17vw;
-    height: 7vh;
+    height: 9vh;
     min-width: 8vw;
 }
 
@@ -38,6 +54,10 @@ div#navbarCollapse {
 
 .container.col-md-12.align-content-center {
     padding: 0;
+    height: 5vh;
+}
+.minVH {
+    min-height: 70vh;
 }
 
 body {
@@ -51,6 +71,15 @@ body {
 .darkColor {
     background-color: #424346;
     color: #B0B0B0;
+}
+/* users */
+td {
+    color: wheat;
+}
+
+th {
+    color: antiquewhite;
+    background-color: #554b38;
 }
 
 /* homepage */
@@ -75,12 +104,53 @@ div#napis p {
     padding-bottom: 57vh;
     padding-top: 26vh;
 }
+
+.homeTitle {
+    padding-top: 5vh;
+    color: #1b1e21;
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+    font-size: 5vw;
+}
 /*  Add post */
 .addPost {
     background-color: #090909;
     height: 60vh;
     padding-top: 5vw;
 }
+
+.iconFa {
+    font-size: 3vh;
+}
+
+.divider {
+    border-bottom: 1px solid rgba(29, 29, 29, 0.6);
+}
+.text-date {
+    color: #726f46;
+}
+.blackbar {
+    background-color: black;
+    width: 100%;
+    min-height: 25vh;
+    margin: 0;
+    padding: 0;
+
+}
+
+.firstPost {
+    background-color: white;
+    color: black;
+}
+
+.roundedCustom {
+    border-radius: 2.5rem;
+}
+
+.apiNightSky {
+    min-height: 600px;
+}
+
 
 @media only screen and (max-width: 768px) {
     .navbar-nav {
@@ -92,9 +162,6 @@ div#napis p {
         margin: 3vh auto 3vh auto;
     }
 
-    a.nav-item.nav-link:hover {
-        letter-spacing: 7px;
-    }
 
     nav.navbar {
         background-color: black!important;

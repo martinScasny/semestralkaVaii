@@ -6,6 +6,7 @@ use Aginev\Datagrid\Datagrid;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Policies\UserPolicy;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -28,8 +29,8 @@ class UserController extends Controller
             ->setColumn('email', 'Email address')
             ->setActionColumn([
                 'wrapper' => function ($value, $row) use ($user, $grid) {
-                    return '<a href="' . route('user.edit', [$row->id]) . '" title="Edit" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="' . route('user.delete', $row->id) . '" title="Delete" cata-method="DELETE" class="btn btn-sm btn-danger" data-confirm="Are you sure ?">Delete</a>'
+                    return '<a href="' . route('user.edit', [$row->id]) . '" title="Edit" ><i class="fas fa-edit text-success iconFa"></i></a>
+                    <a href="' . route('user.delete', $row->id) . '" title="Delete" cata-method="DELETE"  data-confirm="Are you sure ?"><i class="far fa-minus-square text-danger iconFa"></i></a>'
                         ;
                 }
             ]);
@@ -39,6 +40,11 @@ class UserController extends Controller
 
     }
 
+    public function indexHome()
+    {
+
+        return view('home');
+    }
     /**
      * Show the form for creating a new resource.
      *

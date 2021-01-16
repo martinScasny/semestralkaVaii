@@ -63,6 +63,12 @@ class UserPolicy
         return Auth::user()->name == 'admin' || Auth::user()->name == $grid->name;
     }
 
+    public function postsManagement(User $user)
+    {
+        return Auth::user()->name == 'admin';
+    }
+
+
     /**
      * Determine whether the user can delete the model.
      *
@@ -72,7 +78,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        return Auth::user()->name == 'admin';
     }
 
     /**

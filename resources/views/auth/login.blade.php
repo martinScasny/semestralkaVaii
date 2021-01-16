@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-5 minVH">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card bg-dark">
                 <div class="card-header login">Prihlásenie</div>
 
-                <div class="card-body">
+                <div class="card-body login">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

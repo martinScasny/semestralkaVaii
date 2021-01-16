@@ -11,11 +11,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
+    <script src="https://kit.fontawesome.com/e7858c52b6.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,54 +35,54 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <!-- Left Side Of Navbar -->
                     <div class="navbar-nav">
-                        <a href="{{ route('home') }}" class="nav-item nav-link active">Domov</a>
+                        <a href="{{ route('home') }}" class="nav-item nav-link">Domov</a>
                         <a href="{{ route('news') }}" class="nav-item nav-link">Novinky</a>
                         <a href="" class="nav-item nav-link">Súhvezdia</a>
                     </div>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <div class="navbar-nav ml-auto">
                             @auth
                                 @can('create',\App\Models\User::class)
-                                    <a class="nav-link" href="{{ route('user.index') }}">{{ __('Používatelia') }}</a>
+                                    <a class="nav-link" href="{{ route('user.index') }}">Používatelia</a>
                                 @endcan
                             @endauth
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
+                                <div class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">Prihlásiť sa</a>
-                                </li>
+                                </div>
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <div class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">Registrovať sa</a>
-                                </li>
+                                </div>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <div class="nav-item">
                                 <a class="nav-link">
                                     {{ Auth::user()->name }}
                                 </a>
 
-                            </li>
-                            <li class="nav-item">
+                            </div>
+                            <div class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Odhlásiť sa</a>
-                            </li>
+                            </div>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                         @endguest
-                    </ul>
+                    </div>
                 </div>
         </nav>
-
+    </div>
         <main>
             @yield('content')
         </main>
-    </div>
+
     <div class="container col-md-12 align-content-center">
         <footer class="page-footer font-small unique-color-dark pt-4">
             <div class="footer-copyright text-center py-3">© 2020 Copyright:
