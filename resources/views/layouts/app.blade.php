@@ -7,12 +7,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/e7858c52b6.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -37,7 +40,7 @@
                     <div class="navbar-nav">
                         <a href="{{ route('home') }}" class="nav-item nav-link">Domov</a>
                         <a href="{{ route('news') }}" class="nav-item nav-link">Novinky</a>
-                        <a href="" class="nav-item nav-link">Súhvezdia</a>
+                        <a href="{{ route('const') }}" class="nav-item nav-link">Súhvezdia</a>
                     </div>
 
                     <!-- Right Side Of Navbar -->

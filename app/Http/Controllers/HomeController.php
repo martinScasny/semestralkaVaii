@@ -18,4 +18,11 @@ class HomeController extends Controller
 
         return view('home');
     }
+
+    public function random() {
+
+        $id = 4;
+        $image = DB::table('posts')->where('id',$id)->pluck('image');
+        return response()->json($image);
+    }
 }

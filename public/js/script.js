@@ -1,18 +1,20 @@
-window.onscroll = changePos;
 
-function changePos() {
-    var header = document.getElementById("top");
-    if (window.pageYOffset > 70) {
-        header.style.position = "absolute";
-        header.style.top = pageYOffset + "px";
-    } else {
-        header.style.position = "";
-        header.style.top = "";
-    }
-}
-$(function () {
-    $(document).scroll(function () {
-        var $nav = $(".navbar-dark");
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+
+
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+$(document).on('click', '#imageClick', (event) => {
+    var target = $(event.target);
+    console.log(target.html());
+    var request = $.get('const/' + target.html());
+
+
+    request.done(function(response) {
+        $('.appendDiv').empty();
+        var element = $("<div/>");
+        element.className = 'col-6 offset-3';
+        element.html((response)['info']);
+        $(document).find('.appendDiv').append(element);
     });
 });
+

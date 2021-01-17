@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
 
 class PostController extends Controller
 {
@@ -26,6 +27,7 @@ class PostController extends Controller
 
         return view('news.index', ['posts' => $post]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +50,7 @@ class PostController extends Controller
         $data = request()->validate([
             'title' => 'required|max:100',
             'text' => 'required',
-            'image' => 'required|image', // TODO change to non required
+            'image' => 'required|image',
         ]);
 
         $imagePath = request('image')->store('uploads','public');
@@ -83,7 +85,7 @@ class PostController extends Controller
         $data = request()->validate([
             'title' => 'required|max:100',
             'text' => 'required',
-            'image' => 'required|image', // TODO change to non required
+            'image' => 'required|image',
         ]);
         $oldPath = Post::find($id)['image'];
 

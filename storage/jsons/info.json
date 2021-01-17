@@ -1,0 +1,16 @@
+
+{
+    "taurus": {
+        "info": "Taurus is a large and prominent constellation in the northern hemisphere's winter sky, between Aries to the west and Gemini to the east; to the north lies Perseus and Auriga, to the southeast Orion, to the south Eridanus, and to the southwest Cetus. In late November-early December, Taurus reaches opposition (furthest point from the Sun) and is visible the entire night. By late March, it is setting at sunset and completely disappears behind the Sun's glare from May to July",
+        "stars": ["Aldebaran","Nath","Atlas"]
+    },
+    "gemini": {
+        "info": "Gemini is prominent in the winter skies of the northern Hemisphere and is visible the entire night in December-January. The easiest way to locate the constellation is to find its two brightest stars Castor and Pollux eastward from the familiar “V” shaped asterism (the open cluster Hyades) of Taurus and the three stars of Orion’s belt.",
+        "stars": ["Pollux","Castor","Alhena"]
+    },
+    "leo": {
+        "info": "Leo is one of the constellations of the zodiac, lying between Cancer the crab to the west and Virgo the maiden to the east. It is located in the Northern celestial hemisphere. Its name is Latin for lion, and to the ancient Greeks represented the Nemean Lion killed by the mythical Greek hero Heracles.",
+        "stars": ["Regulus","Algieba","Denebola"]
+    }
+
+}
