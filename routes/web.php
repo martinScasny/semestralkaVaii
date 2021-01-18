@@ -28,9 +28,10 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/const','App\Http\Controllers\ConstController@index')->name('const');
 
 Route::get('/const/{name}','App\Http\Controllers\ConstController@fetchJson')->name('ajax');
+Route::get('/news/index', [\App\Http\Controllers\PostController::class, 'index'])->name('news');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/news/index', [\App\Http\Controllers\PostController::class, 'index'])->name('news');
+
     Route::get('/news/create', [\App\Http\Controllers\PostController::class, 'create'])->name('news.create');
     Route::post('/news/create', [\App\Http\Controllers\PostController::class, 'store'])->name('news.createPost');
 
