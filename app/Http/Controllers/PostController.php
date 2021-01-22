@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-
+    
     }
 
     /**
@@ -90,12 +90,8 @@ class PostController extends Controller
         $oldPath = Post::find($id)['image'];
 
         $imagePath = request('image')->store('uploads','public');
-
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,500);
         $image->save();
-
-        $request['image'];
-
 
         Storage::delete('public/' . $oldPath);
 

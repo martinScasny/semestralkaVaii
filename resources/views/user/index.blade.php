@@ -19,7 +19,7 @@
                                         new user</a>
                                 </div>
                             @endcan
-                        <div class="login">
+                        <div class="login" style="overflow-x:auto;">
                             {!! $grid->show() !!}
                         </div>
                     </div>

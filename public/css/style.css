@@ -3,7 +3,7 @@
 @media only screen and (min-width: 768px) {
     nav.navbar{
 
-        background-image: url("../img/Rectangle_1.png");
+        background-image: url(../img/Rectangle_1.png);
         background-repeat: repeat-x;
         background-size: cover;
         min-height: 13vh;
@@ -11,10 +11,15 @@
     }
 }
 
-.scrolled {
-    opacity: 0.7 !important;
-    transition: opacity 200ms linear;
+#backToTop {
+    color: black;
+    font-size: 10vw;
+    transition: font-size 1s;
 }
+i#backToTop:hover {
+    font-size: 20vw!important;
+}
+
 /* fade ------------------------*/
 .header {
     position: relative;
@@ -25,6 +30,21 @@
 }
 
 .header #bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+.apiContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.apiContainer.blackbar {
     position: absolute;
     top: 0;
     left: 0;
@@ -85,6 +105,17 @@ body {
     color: white;
 }
 
+.postsText {
+    color: rgb(150, 160, 200);
+    font-size: 1.2rem;
+}
+
+.postTitle {
+    color: rgb(238, 238, 238);
+    font-family: 'Lato', sans-serif;
+    font-size: 1.8rem;
+}
+
 .darkColor {
     background-color: #424346;
     color: #B0B0B0;
@@ -113,7 +144,7 @@ div#napis p {
 }
 
 .stromy {
-    background-image: url("../img/wallpaper2.jpg");
+    background-image: url(../img/wallpaper2.jpg);
     background-repeat: no-repeat;
     background-size: cover ;
     background-position: center center;
@@ -144,7 +175,8 @@ div#napis p {
     border-bottom: 1px solid rgba(29, 29, 29, 0.6);
 }
 .text-date {
-    color: #726f46;
+    font-size: 0.8rem;
+    color: #006dbc;
 }
 .blackbar {
     background-color: black;
@@ -167,13 +199,19 @@ button.btn.darkColor.col-2.offset-5 {
     margin-bottom: 2vw;
 }
 
-.roundedCustom {
-    border-radius: 2.5rem;
-}
 
 .apiNightSky {
     min-height: 600px;
 }
+
+iframe {
+    border: 5px solid #ffffff;
+}
+iframe {
+    width:1000px;
+    height:500px;
+}
+
 
 /* constellations images */
 
@@ -207,6 +245,7 @@ button.btn.darkColor.col-2.offset-5 {
 
 .kontajner:hover .imgOverlay {
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .col-6.offset-3.appendDiv {
@@ -245,20 +284,115 @@ h3.starsText.text-center.p-3.m-2 {
 /* constellations images end -------- */
 
 @media only screen and (max-width: 768px) {
-    .navbar-nav {
-        margin: auto;
-        font-size: 1.5vw;
-    }
-
     a.nav-item.nav-link {
-        margin: 3vh auto 3vh auto;
+        margin: 0 0 0 0vw!important;
+        color: #c3c3c3 !important;
+        font-size: 3vh!important;
     }
 
-
-    nav.navbar {
-        background-color: black!important;
+    a.nav-link {
+        margin: 0 0 0 0vw!important;
+        color: #c3c3c3 !important;
+        font-size: 3vh!important;
     }
 
+    nav.navbar{
+        position: fixed;
+        top: 0;
+        background-color: black;
+        background-size: cover;
+        opacity: 0.8;
+        border-bottom: 1px solid rgba(255,255,255,0.4);
+        z-index: 1000;
+    }
 
+    div#navbarCollapse {
+        margin: 0vh 0vh 0vh 0vh;
+        min-height: 50vh;
+        min-width: 4vh;
+        text-align: center;
+    }
+
+    canvas#starmapper_inner {
+        width: 250px!important;
+        height: 300px!important;
+    }
+
+    .apiNightSky {
+        min-height: 600px;
+    }
+    .pb-5, .py-5 {
+     padding-bottom: 0;
+    }
+
+    .pt-5, .py-5 {
+        padding-top: 0;
+    }
+    .offset-3 {
+        margin-left: 0;
+    }
+    .col-6 {
+        flex: 0 0 0;
+        max-width: 0;
+    }
+
+    .pt-5.pb-5.row.col-6.offset-3.apiNightSky {
+        padding: 0;
+        margin-left: 7vw;
+    }
+
+    a.btn.bg-dark.login {
+        width: 100%;
+    }
+    .titleResp {
+        text-align: center!important;
+        justify-content: normal!important;
+    }
+
+    .col-4.text-center {
+        margin-left: 18vw;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+
+    .iconFa {
+        font-size: 6vh;
+    }
+
+    i.far.fa-minus-square.login.iconFa {
+        font-size: 6.5vh;
+    }
+    .col-1 {
+        padding: 0;
+        margin-right: 27px;
+    }
+
+    img.roundedCustom.col-md-12 {
+        padding: 0;
+    }
+/* const   --------------------------------- */
+    .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .textInImg {
+        font-size: 8vh;
+    }
+    .col-6.offset-3.appendDiv {
+        font-size: 2.5vh;
+        max-width: 100%!important;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
 }
 
